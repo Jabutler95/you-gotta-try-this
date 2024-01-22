@@ -2,6 +2,16 @@
 <link rel="stylesheet" href="/stylesheets/ingredients/show.css" />
 <%- include('../partials/nav') %>
 
-<h1>this is the show view</h1>
+<main>
+  <h1><%= title %></h1>
+  <section>
+    <div><%= recipe.recipeName %></div>
+    <div>Ingredients:</div>
+    <div><%= recipe.ingredients %></div>
+    <div> Recipe Instructions:</div>
+    <div><%= recipe.instructions %></div>
+
+  </section>
+</main>
 
 <%- include('../partials/footer') %>
