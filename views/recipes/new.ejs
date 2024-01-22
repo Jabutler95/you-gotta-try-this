@@ -2,6 +2,27 @@
 
 <%- include('../partials/nav') %>
 
-<h1>Create a Recipe</h1>
+<main>
+  <h1><%= title %></h1>
+  <form action="/recipes" method="POST">
+    <label for="recipe-input">Recipe Name:</label>
+    <input type="text" name="recipeName" id="recipe-input" placeholder="Spaghetti and Meatballs">
+    <label for="instructions-input">Instructions:</label>
+    <input type="text" name="instructions" id="instructions-input" placeholder="First, ">
+    <button type="submit">Add Recipe</button>
+  </form>
+  <form action="/recipes/new" method="POST" id="add-ingredient-form">
+    <label for="ingredient-name">Choose an ingredient:</label>
+    <select name="ingredientId" id="ingredient-name"></select>
+    <label for="ingredient-quantity">Quantity:</label>
+    <input type="number" name="quantity" id="ingredient-quantity">
+    <label for="ingredient-unit">Unit of Measurement:</label>
+    <select name="enum" id="ingredient-unit">
+      <% recipes.ingredients.forEach(function(ingredient) { %>
+        <option><%= ingredient.enum %></option>
+      <% }) %>
+    </select>
+  </form>
+</main>
 
 <%- include('../partials/footer') %>

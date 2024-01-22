@@ -1,4 +1,5 @@
 import { Recipe } from "../models/recipe.js"
+import { Ingredient } from "../models/ingredient.js"
 
 function index(req, res) {
   Recipe.find({})
@@ -14,14 +15,26 @@ function index(req, res) {
   })
 }
 
-function newRecipe (req, res) {
+function newRecipe(req, res) {
   res.render('recipes/new', {
     title: 'Add Recipe'
+  })
+}
+
+function create(req, res) {
+  Recipe.create(req.body)
+  .then(recipe => {
+    res.redirect('/recipes')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/recipes/new')
   })
 }
 
 export {
   index,
   newRecipe as new,
+  create,
   
 }

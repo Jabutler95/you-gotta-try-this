@@ -8,5 +8,7 @@ const router = Router()
 router.get('/', recipesCtrl.index)
 // GET localhost:3000/recipes/new
 router.get('/new', isLoggedIn, recipesCtrl.new)
+// POST localhost:3000/recipes
+router.post('/', isLoggedIn, recipesCtrl.create)
 
 export { router }

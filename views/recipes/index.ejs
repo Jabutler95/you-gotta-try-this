@@ -4,6 +4,13 @@
 
 <main>
   <h1>Recipes</h1>
+  <ul>
+    <% recipes.forEach(recipe => { %>
+      <li> 
+        <a href="/recipes/<%= recipe._id %>"><%= recipe.recipeName %></a> 
+      </li>
+    <% }) %>
+  </ul>
 </main>
 
 <%- include('../partials/footer') %>
