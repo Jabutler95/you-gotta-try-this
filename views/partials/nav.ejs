@@ -9,6 +9,11 @@
     >
       ALL RECIPES
     </a>
+    <a 
+    href="/recipes/new" class=<%= title === 'Add Recipe' ? 'active' : '' %>
+    >
+      ADD RECIPE
+  </a>
     <% if (user) { %>
       <a href="/auth/logout" class="right">
         <button type="submit">Logout</button>

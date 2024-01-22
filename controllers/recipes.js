@@ -14,6 +14,14 @@ function index(req, res) {
   })
 }
 
+function newRecipe (req, res) {
+  res.render('recipes/new', {
+    title: 'Add Recipe'
+  })
+}
+
 export {
   index,
+  newRecipe as new,
+  
 }
