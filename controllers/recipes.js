@@ -32,9 +32,23 @@ function create(req, res) {
   })
 }
 
+function show(req, res){
+  Recipe.findById(req.params.recipeId)
+  .then(recipe => {
+    res.render('recipes/show', {
+      recipe: recipe,
+      title: 'Recipe Detials'
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
+  })
+}
 export {
   index,
   newRecipe as new,
   create,
+  show,
   
 }
