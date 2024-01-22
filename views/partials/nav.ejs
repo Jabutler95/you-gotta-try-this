@@ -4,6 +4,11 @@
 </head>
 <body>
   <nav>
+    <a 
+      href="/recipes" class=<%= title === 'All Recipes' ? 'active' : '' %>
+    >
+      ALL RECIPES
+    </a>
     <% if (user) { %>
       <a href="/auth/logout" class="right">
         <button type="submit">Logout</button>
