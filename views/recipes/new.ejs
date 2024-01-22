@@ -9,19 +9,30 @@
     <input type="text" name="recipeName" id="recipe-input" placeholder="Spaghetti and Meatballs">
     <label for="instructions-input">Instructions:</label>
     <input type="text" name="instructions" id="instructions-input" placeholder="First, ">
-    <button type="submit">Add Recipe</button>
-  </form>
-  <form action="/recipes/new" method="POST" id="add-ingredient-form">
     <label for="ingredient-name">Choose an ingredient:</label>
     <select name="ingredientId" id="ingredient-name"></select>
     <label for="ingredient-quantity">Quantity:</label>
     <input type="number" name="quantity" id="ingredient-quantity">
     <label for="ingredient-unit">Unit of Measurement:</label>
     <select name="enum" id="ingredient-unit">
-      <% recipes.ingredients.forEach(function(ingredient) { %>
-        <option><%= ingredient.enum %></option>
-      <% }) %>
+      <option value="millileter(s)">millileter(s)</option>
+      <option value="liter(s)">liter(s)</option>
+      <option value="deciliter(s)">deciliter(s)</option>
+      <option value="teaspoon(s)">teaspoon(s)</option>
+      <option value="">tablespoon(s)</option>
+      <option value="fluid ounce(s)">fluid ounce(s)</option>
+      <option value="gill(s)">gill(s)</option>
+      <option value="cup(s)">cup(s)</option>
+      <option value="pint(s)">pint(s)</option>
+      <option value="quart(s)">quart(s)</option>
+      <option value="gallon(s)">gallon(s)</option>
+      <option value="milligram(s)">milligram(s)</option>
+      <option value="gram(s)">gram(s)</option>
+      <option value="">kilogram(s)</option>
+      <option value="pound(s)">pound(s)</option>
+      <option value="ounce(s)">ounce(s)</option>
     </select>
+    <button type="submit">Add Recipe</button>
   </form>
 </main>
 
