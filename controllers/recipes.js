@@ -21,12 +21,12 @@ function newRecipe(req, res) {
       res.render('recipes/new', {
         title: 'Add Recipe',
         ingredients: ingredients  // Include ingredients data in the render
-      });
+      })
     })
     .catch(err => {
       console.log(err);
       res.redirect('/recipes/new');
-    });
+    })
 }
 
 
@@ -66,11 +66,24 @@ function show(req, res) {
 
 function edit(req, res) {
   Recipe.findById(req.params.recipeId)
+  .populate('items')
   .then(recipe => {
-    res.render('recipes/edit', {
-      recipe:recipe,
-      title: 'Edit Recipe'
+    Ingredient.find({_id: {$nin: recipe.ingredients}})
+    .then(ingredients => {
+      res.render('recipes/edit', {
+        recipe: recipe,
+        title: 'Recipe Detail',
+        ingredients: ingredients
+      })
     })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/')
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
   })
 }
 
