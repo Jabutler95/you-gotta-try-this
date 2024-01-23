@@ -1,6 +1,17 @@
 <%- include('../partials/html-head') %>
 <link rel="stylesheet" href="/stylesheets/recipes/new.css" />
 <%- include('../partials/nav') %>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const addIngredientButton = document.getElementById('add-ingredient-button')
+    const ingredientsSection = document.getElementById('ingredients-section')
+    addIngredientButton.addEventListener('click', function() {
+      const newIngredientSection = ingredientsSection.cloneNode(true)
+      newIngredientSection.querySelector('.ingredient-quantity').value = ''
+      ingredientsSection.parentNode.insertBefore(newIngredientSection, addIngredientButton)
+    })
+  })
+</script>
 
 <main>
   <h1><%= title %></h1>
@@ -41,23 +52,8 @@
     <button type="button" id="add-ingredient-button">Add Ingredient</button>
     <button type="submit">Add Recipe</button>
   </form>
+
+
+
 </main>
 <%- include('../partials/footer') %>
-<script>
-  //  Adding multiple ingredients dynamically
-  document.addEventListener('DOMContentLoaded', function() {
-    const addIngredientButton = document.getElementById('add-ingredient-button')
-    const ingredientsSection = document.getElementById('ingredients-section')
-
-    addIngredientButton.addEventListener('click', function() {
-      // Clone the ingredient section
-      const newIngredientSection = ingredientsSection.cloneNode(true)
-
-      // Clear the values in the cloned section
-      newIngredientSection.querySelector('.ingredient-quantity').value = ''
-
-      // Append the cloned section to the form
-      ingredientsSection.parentNode.insertBefore(newIngredientSection, addIngredientButton)
-    })
-  })
-</script>

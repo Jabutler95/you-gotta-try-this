@@ -8,8 +8,8 @@
     <div><%= recipe.recipeName %></div>
     <div>Ingredients:</div>
       <ul>
-        <% recipe.items.forEach(item => { %>
-          <li><%= item.ingredientName %> - <%= item.quantity %> <%= item.enum %></li>
+        <% recipe.ingredients.forEach(ingredient => { %>
+          <li><%= ingredient.ingredientName %> - <%= ingredient.quantity %> <%= ingredient.unit %></li>
         <% }) %>
       </ul>
     <div> Recipe Instructions:</div>

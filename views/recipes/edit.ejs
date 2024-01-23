@@ -2,6 +2,7 @@
 
 <%-  include('../partials/nav') %>
 
+
 <main>
   <h1><%= title %></h1>
   <form 
@@ -52,21 +53,3 @@
 </main>
 
 <%- include('../partials/footer') %>
-<script>
-  //  Adding multiple ingredients dynamically
-  document.addEventListener('DOMContentLoaded', function() {
-    const addIngredientButton = document.getElementById('add-ingredient-button')
-    const ingredientsSection = document.getElementById('ingredients-section')
-
-    addIngredientButton.addEventListener('click', function() {
-      // Clone the ingredient section
-      const newIngredientSection = ingredientsSection.cloneNode(true)
-
-      // Clear the values in the cloned section
-      newIngredientSection.querySelector('.ingredient-quantity').value = ''
-
-      // Append the cloned section to the form
-      ingredientsSection.parentNode.insertBefore(newIngredientSection, addIngredientButton)
-    })
-  })
-</script>

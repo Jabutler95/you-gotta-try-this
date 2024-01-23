@@ -43,7 +43,7 @@ function create(req, res) {
 
 function show(req, res) {
   Recipe.findById(req.params.recipeId)
-  .populate('items')
+  .populate('ingredients')
   .then(recipe => {
     Ingredient.find(req.params.ingredientId)
     .then(ingredients => {
@@ -66,13 +66,13 @@ function show(req, res) {
 
 function edit(req, res) {
   Recipe.findById(req.params.recipeId)
-  .populate('items')
+  .populate('ingredients')
   .then(recipe => {
-    Ingredient.find({_id: {$nin: recipe.ingredients}})
+    Ingredient.find({})
     .then(ingredients => {
       res.render('recipes/edit', {
         recipe: recipe,
-        title: 'Recipe Detail',
+        title: 'Edit Recipe',
         ingredients: ingredients
       })
     })
@@ -112,19 +112,19 @@ function deleteRecipe(req, res) {
 function addIngredients(req, res) {
   Recipe.findById(req.params.recipeId)
   .then(recipe => {
-    recipe.items.push(req.body.itemId)
+    recipe.ingredients.push(req.body.ingredientId)
     recipe.save()
     .then(() => {
       res.redirect(`/recipes/${recipe._id}`)
     })
     .catch(err => {
       console.log(err)
-      res.redirect('/flights')
+      res.redirect('/recipes')
     })
   })
   .catch(err => {
     console.log(err)
-    res.redirect('/flights')
+    res.redirect('/recipes')
   })
 }
 
