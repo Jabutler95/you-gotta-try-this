@@ -15,6 +15,6 @@ router.get('/:recipeId/edit', recipesCtrl.edit)
 // POST localhost:3000/recipes
 router.post('/', isLoggedIn, recipesCtrl.create)
 // PUT localhost:3000/recipes/:recipeId
-router.put('/:movieId', moviesCtrl.update)
+router.put('/:recipeId', recipesCtrl.update)
 
 export { router }
