@@ -10,7 +10,9 @@
     <div><%= recipe.ingredients %></div>
     <div> Recipe Instructions:</div>
     <div><%= recipe.instructions %></div>
-
+    <a href="/recipes/<%= recipe._id %>/edit">
+      <button>Edit Recipe</button>
+    </a>
   </section>
 </main>
 
