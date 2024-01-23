@@ -87,11 +87,22 @@ function edit(req, res) {
   })
 }
 
+function update(req, res) {
+  Recipe.findByIdAndUpdate(req.params.recipeId, req.body, {new: true})
+  .then(recipe => {
+    res.redirect(`/recipes/${recipe._id}`)
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/recipes')
+  })
+}
+
 export {
   index,
   newRecipe as new,
   create,
   show,
   edit,
-  
+  update
 }
