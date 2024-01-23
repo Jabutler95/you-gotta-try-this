@@ -115,5 +115,6 @@ export {
   create,
   show,
   edit,
-  update
+  update,
+  deleteRecipe as delete
 }
