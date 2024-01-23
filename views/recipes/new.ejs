@@ -10,7 +10,11 @@
     <label for="instructions-input">Instructions:</label>
     <input type="text" name="instructions" id="instructions-input" placeholder="First, ">
     <label for="ingredient-name">Choose an ingredient:</label>
-    <select name="ingredientId" id="ingredient-name"></select>
+    <select name="ingredientId">
+        <% ingredients.forEach(ingredient => { %>
+          <option value="<%= ingredient._id %>"><%= ingredient.ingredientName %></option>
+        <% }) %>
+    </select>
     <label for="ingredient-quantity">Quantity:</label>
     <input type="number" name="quantity" id="ingredient-quantity">
     <label for="ingredient-unit">Unit of Measurement:</label>

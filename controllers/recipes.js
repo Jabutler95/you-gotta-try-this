@@ -16,10 +16,19 @@ function index(req, res) {
 }
 
 function newRecipe(req, res) {
-  res.render('recipes/new', {
-    title: 'Add Recipe'
-  })
+  Ingredient.find({})
+    .then(ingredients => {
+      res.render('recipes/new', {
+        title: 'Add Recipe',
+        ingredients: ingredients  // Include ingredients data in the render
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.redirect('/recipes/new');
+    });
 }
+
 
 function create(req, res) {
   Recipe.create(req.body)
@@ -32,12 +41,21 @@ function create(req, res) {
   })
 }
 
-function show(req, res){
+function show(req, res) {
   Recipe.findById(req.params.recipeId)
+  .populate('items')
   .then(recipe => {
-    res.render('recipes/show', {
-      recipe: recipe,
-      title: 'Recipe Details'
+    Ingredient.find({_id: {$nin: recipe.ingredients}})
+    .then(ingredients => {
+      res.render('recipes/show', {
+        recipe: recipe,
+        title: 'Recipe Detail',
+        ingredients: ingredients
+      })
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/')
     })
   })
   .catch(err => {
@@ -45,6 +63,7 @@ function show(req, res){
     res.redirect('/')
   })
 }
+
 export {
   index,
   newRecipe as new,
