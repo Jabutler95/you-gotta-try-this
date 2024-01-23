@@ -7,7 +7,11 @@
   <section>
     <div><%= recipe.recipeName %></div>
     <div>Ingredients:</div>
-    <div><%= recipe.ingredients %></div>
+      <ul>
+        <% recipe.items.forEach(item => { %>
+          <li><%= item.ingredientName %> - <%= item.quantity %> <%= item.enum %></li>
+        <% }) %>
+      </ul>
     <div> Recipe Instructions:</div>
     <div><%= recipe.instructions %></div>
     <a href="/recipes/<%= recipe._id %>/edit">

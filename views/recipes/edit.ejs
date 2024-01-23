@@ -11,27 +11,23 @@
   >
   <label for="recipe-input">Recipe Name:</label>
   <input type="text" name="recipeName" id="recipe-input" value="<%= recipe.recipeName %>">
-  <div>Ingredients:</div>
-  <ul>
-    <% recipe.items.forEach(item => { %>
-      <li><%= item.ingredientName %></li>
-    <% }) %>
-  </ul>
-  <label for="ingredient-name">Choose an ingredient:</label>
+  <div id="ingredients-section">
+    
+    <label for="ingredient-name">Choose an ingredient:</label>
     <select name="ingredientId">
-        <% ingredients.forEach(ingredient => { %>
-          <option value="<%= ingredient._id %>"><%= ingredient.ingredientName %></option>
-        <% }) %>
+      <% ingredients.forEach(ingredient => { %>
+        <option value="<%= ingredient._id %>"><%= ingredient.ingredientName %></option>
+      <% }) %>
     </select>
     <label for="ingredient-quantity">Quantity:</label>
-    <input type="number" name="quantity" id="ingredient-quantity">
+    <input type="number" name="quantity" class="ingredient-quantity">
     <label for="ingredient-unit">Unit of Measurement:</label>
-    <select name="enum" id="ingredient-unit">
+    <select name="enum" class="ingredient-unit">
       <option value="millileter(s)">millileter(s)</option>
       <option value="liter(s)">liter(s)</option>
       <option value="deciliter(s)">deciliter(s)</option>
       <option value="teaspoon(s)">teaspoon(s)</option>
-      <option value="">tablespoon(s)</option>
+      <option value="tablespoon(s)">tablespoon(s)</option>
       <option value="fluid ounce(s)">fluid ounce(s)</option>
       <option value="gill(s)">gill(s)</option>
       <option value="cup(s)">cup(s)</option>
@@ -40,10 +36,12 @@
       <option value="gallon(s)">gallon(s)</option>
       <option value="milligram(s)">milligram(s)</option>
       <option value="gram(s)">gram(s)</option>
-      <option value="">kilogram(s)</option>
+      <option value="kilogram(s)">kilogram(s)</option>
       <option value="pound(s)">pound(s)</option>
       <option value="ounce(s)">ounce(s)</option>
     </select>
+  </div>
+  <button type="button" id="add-ingredient-button">Add Ingredient</button>
     <label for="instructions-input">Instructions:</label>
     <input type="text" name="instructions" id="instructions-input" value="<%= recipe.instructions %>">
     <button type="submit">Save Recipe Changes</button>
@@ -54,3 +52,21 @@
 </main>
 
 <%- include('../partials/footer') %>
+<script>
+  //  Adding multiple ingredients dynamically
+  document.addEventListener('DOMContentLoaded', function() {
+    const addIngredientButton = document.getElementById('add-ingredient-button')
+    const ingredientsSection = document.getElementById('ingredients-section')
+
+    addIngredientButton.addEventListener('click', function() {
+      // Clone the ingredient section
+      const newIngredientSection = ingredientsSection.cloneNode(true)
+
+      // Clear the values in the cloned section
+      newIngredientSection.querySelector('.ingredient-quantity').value = ''
+
+      // Append the cloned section to the form
+      ingredientsSection.parentNode.insertBefore(newIngredientSection, addIngredientButton)
+    })
+  })
+</script>

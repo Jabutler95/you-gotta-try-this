@@ -20,7 +20,7 @@ function newRecipe(req, res) {
     .then(ingredients => {
       res.render('recipes/new', {
         title: 'Add Recipe',
-        ingredients: ingredients  // Include ingredients data in the render
+        ingredients: ingredients  
       })
     })
     .catch(err => {
@@ -45,7 +45,7 @@ function show(req, res) {
   Recipe.findById(req.params.recipeId)
   .populate('items')
   .then(recipe => {
-    Ingredient.find({_id: {$nin: recipe.ingredients}})
+    Ingredient.find(req.params.ingredientId)
     .then(ingredients => {
       res.render('recipes/show', {
         recipe: recipe,
