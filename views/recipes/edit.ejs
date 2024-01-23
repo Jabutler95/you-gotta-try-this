@@ -1,0 +1,53 @@
+<%- include('../partials/html-head') %>
+
+<%-  include('../partials/nav') %>
+
+<main>
+  <h1><%= title %></h1>
+  <form 
+    id="edit-form"
+    action="/recipes/<%= recipe._id %>?_method=PUT"
+    method="POST"
+  >
+  <label for="recipe-input">Recipe Name:</label>
+  <input type="text" name="recipeName" id="recipe-input" value="<%= recipe.recipeName %>">
+  <div>Ingredients:</div>
+  <ul>
+    <% recipe.items.forEach(item => { %>
+      <li><%= item.ingredientName %></li>
+    <% }) %>
+  </ul>
+  <label for="ingredient-name">Choose an ingredient:</label>
+    <select name="ingredientId">
+        <% ingredients.forEach(ingredient => { %>
+          <option value="<%= ingredient._id %>"><%= ingredient.ingredientName %></option>
+        <% }) %>
+    </select>
+    <label for="ingredient-quantity">Quantity:</label>
+    <input type="number" name="quantity" id="ingredient-quantity">
+    <label for="ingredient-unit">Unit of Measurement:</label>
+    <select name="enum" id="ingredient-unit">
+      <option value="millileter(s)">millileter(s)</option>
+      <option value="liter(s)">liter(s)</option>
+      <option value="deciliter(s)">deciliter(s)</option>
+      <option value="teaspoon(s)">teaspoon(s)</option>
+      <option value="">tablespoon(s)</option>
+      <option value="fluid ounce(s)">fluid ounce(s)</option>
+      <option value="gill(s)">gill(s)</option>
+      <option value="cup(s)">cup(s)</option>
+      <option value="pint(s)">pint(s)</option>
+      <option value="quart(s)">quart(s)</option>
+      <option value="gallon(s)">gallon(s)</option>
+      <option value="milligram(s)">milligram(s)</option>
+      <option value="gram(s)">gram(s)</option>
+      <option value="">kilogram(s)</option>
+      <option value="pound(s)">pound(s)</option>
+      <option value="ounce(s)">ounce(s)</option>
+    </select>
+    <label for="instructions-input">Instructions:</label>
+    <input type="text" name="instructions" id="instructions-input" value="<%= recipe.instructions %>">
+
+  </form>
+</main>
+
+<%- include('../partials/footer') %>
