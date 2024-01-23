@@ -109,6 +109,25 @@ function deleteRecipe(req, res) {
   })
 }
 
+function addIngredients(req, res) {
+  Recipe.findById(req.params.recipeId)
+  .then(recipe => {
+    recipe.items.push(req.body.itemId)
+    recipe.save()
+    .then(() => {
+      res.redirect(`/recipes/${recipe._id}`)
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/flights')
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/flights')
+  })
+}
+
 export {
   index,
   newRecipe as new,
@@ -116,5 +135,6 @@ export {
   show,
   edit,
   update,
-  deleteRecipe as delete
+  deleteRecipe as delete,
+  addIngredients
 }
