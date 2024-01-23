@@ -64,10 +64,21 @@ function show(req, res) {
   })
 }
 
+function edit(req, res) {
+  Recipe.findById(req.params.recipeId)
+  .then(recipe => {
+    res.render('recipes/edit', {
+      recipe:recipe,
+      title: 'Edit Recipe'
+    })
+  })
+}
+
 export {
   index,
   newRecipe as new,
   create,
   show,
+  edit,
   
 }
