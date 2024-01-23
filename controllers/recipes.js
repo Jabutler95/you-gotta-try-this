@@ -98,6 +98,17 @@ function update(req, res) {
   })
 }
 
+function deleteRecipe(req, res) {
+  Recipe.findByIdAndDelete(req.params.recipeId)
+  .then(recipe => {
+    res.redirect('/recipes')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/recipes')
+  })
+}
+
 export {
   index,
   newRecipe as new,
