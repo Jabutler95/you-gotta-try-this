@@ -2,7 +2,17 @@
 
 <%-  include('../partials/nav') %>
 
-
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const addIngredientButton = document.getElementById('add-ingredient-button')
+    const ingredientsSection = document.getElementById('ingredients-section')
+    addIngredientButton.addEventListener('click', function() {
+      const newIngredientSection = ingredientsSection.cloneNode(true)
+      newIngredientSection.querySelector('.ingredient-quantity').value = ''
+      ingredientsSection.parentNode.insertBefore(newIngredientSection, addIngredientButton)
+    })
+  })
+</script>
 <main>
   <h1><%= title %></h1>
   <form 
@@ -12,18 +22,13 @@
   >
   <label for="recipe-input">Recipe Name:</label>
   <input type="text" name="recipeName" id="recipe-input" value="<%= recipe.recipeName %>">
-  <div id="ingredients-section">
-    
-    <label for="ingredient-name">Choose an ingredient:</label>
-    <select name="ingredientId">
-      <% ingredients.forEach(ingredient => { %>
-        <option value="<%= ingredient._id %>"><%= ingredient.ingredientName %></option>
-      <% }) %>
-    </select>
+  
+
     <label for="ingredient-quantity">Quantity:</label>
-    <input type="number" name="quantity" class="ingredient-quantity">
+    <input type="text" name="quantity" class="ingredient-quantity">
+    
     <label for="ingredient-unit">Unit of Measurement:</label>
-    <select name="enum" class="ingredient-unit">
+    <select name="unit" class="ingredient-unit">
       <option value="millileter(s)">millileter(s)</option>
       <option value="liter(s)">liter(s)</option>
       <option value="deciliter(s)">deciliter(s)</option>
@@ -43,6 +48,7 @@
     </select>
   </div>
   <button type="button" id="add-ingredient-button">Add Ingredient</button>
+  
     <label for="instructions-input">Instructions:</label>
     <input type="text" name="instructions" id="instructions-input" value="<%= recipe.instructions %>">
     <button type="submit">Save Recipe Changes</button>
@@ -50,6 +56,8 @@
   <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
     <button type="submit">Delete Recipe</button>
   </form>
+  <div>Don't see an ingredient you need?</div>
+  <a href="/ingredients/new"><button>Add it to the database here!</button></a>
 </main>
 
 <%- include('../partials/footer') %>
