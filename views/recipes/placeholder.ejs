@@ -1,0 +1,24 @@
+<select name="ingredientId">
+  <% ingredients.forEach(ingredient => { %>
+    <option value="<%= ingredient._id %>"><%= ingredient.ingredientName %></option>
+  <% }) %>
+</select>
+
+<select name="unit" class="ingredient-unit">
+  <option value="millileter(s)">millileter(s)</option>
+  <option value="liter(s)">liter(s)</option>
+  <option value="deciliter(s)">deciliter(s)</option>
+  <option value="teaspoon(s)">teaspoon(s)</option>
+  <option value="tablespoon(s)">tablespoon(s)</option>
+  <option value="fluid ounce(s)">fluid ounce(s)</option>
+  <option value="gill(s)">gill(s)</option>
+  <option value="cup(s)">cup(s)</option>
+  <option value="pint(s)">pint(s)</option>
+  <option value="quart(s)">quart(s)</option>
+  <option value="gallon(s)">gallon(s)</option>
+  <option value="milligram(s)">milligram(s)</option>
+  <option value="gram(s)">gram(s)</option>
+  <option value="kilogram(s)">kilogram(s)</option>
+  <option value="pound(s)">pound(s)</option>
+  <option value="ounce(s)">ounce(s)</option>
+</select>

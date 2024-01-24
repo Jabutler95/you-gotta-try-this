@@ -42,8 +42,10 @@ function newRecipe(req, res) {
 // }
 
 async function makeNewRecipe(req, res) {
+  console.log(req.body);
   try {
     const ingredientIdList = await addIngredients(req, res)
+    console.log(ingredientIdList);
     req.body.ingredients = ingredientIdList
     const recipe = await Recipe.create(req.body)
     res.redirect(`/recipes/${recipe._id}`)
@@ -55,9 +57,15 @@ async function makeNewRecipe(req, res) {
 
 async function addIngredients(req, res) {
   const ingredientIdList = []
-  for (ingredient in req.body.ingredientsToAdd) {
-    const ingredientToPush = await Ingredient.create(ingredient)
+  let idx = 0
+  for (let ingredient in req.body.ingredientName) {
+    const newIngredientObject = {}
+    newIngredientObject.ingredientName = req.body.ingredientName[idx]
+    newIngredientObject.quantity = req.body.quantity[idx]
+    newIngredientObject.unit = req.body.unit[idx]
+    const ingredientToPush = await Ingredient.create(newIngredientObject)
     ingredientIdList.push(ingredientToPush._id)
+    idx++
   }
   return ingredientIdList
 }
@@ -92,6 +100,8 @@ function edit(req, res) {
   .populate('ingredients')
   .then(recipe => {
     Ingredient.find({})
+    recipe.ingredients.push(req.body)
+    recipe.save()
     .then(ingredients => {
       res.render('recipes/edit', {
         recipe: recipe,
