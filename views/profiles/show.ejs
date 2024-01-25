@@ -1,0 +1,15 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<main>
+  <div>
+    <img
+    class="profile-avatar"
+    src="<%= profile.avatar %>" 
+    alt="<%= profile.name %>">
+  </div>
+  <h2>Welcome Chef <%= profile.name %>! What are we cooking today?</h2>
+
+</main>
+
+<%- include('../partials/footer') %>

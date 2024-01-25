@@ -1,56 +1,5 @@
 
 
-function show(req, res) {
-  Recipe.findById(req.params.recipeId)
-  .populate([
-    {path: "ingredients"}
-  ])
-  .then(recipe => {
-    Ingredient.find(req.params.ingredientId)
-    .then(ingredients => {
-      res.render('recipes/show', {
-        recipe: recipe,
-        title: 'Recipe Detail',
-        ingredients: ingredients
-      })
-    })
-    .catch(err => {
-      console.log(err)
-      res.redirect('/')
-    })
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect('/')
-  })
-}
-
-
-<%- include('../partials/html-head') %>
-<link rel="stylesheet" href="/stylesheets/recipes/show.css">
-<%- include('../partials/nav') %>
-
-<main>
-  <h1><%= title %></h1>
-  <section>
-    <div><%= recipe.recipeName %></div>
-    <div>Ingredients:</div>
-      <ul>
-        <% recipe.ingredients.forEach(ingredient => { %>
-          <li><%= ingredient.ingredientName %> - <%= ingredient.quantity %> <%= ingredient.unit %></li>
-        <% }) %>
-      </ul>
-    <div> Recipe Instructions:</div>
-    <div><%= recipe.instructions %></div>
-    <a href="/recipes/<%= recipe._id %>/edit">
-      <button>Edit Recipe</button>
-    </a>
-  </section>
-</main>
-
-<%- include('../partials/footer') %>
-
-
 this is the body +++++ {
   recipeName: 'a;lksdjfl;kasdjflk',
   ingredientName: 'thing 6',
