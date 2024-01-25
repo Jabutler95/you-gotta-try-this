@@ -160,6 +160,30 @@ function addComment(req, res) {
   })
 }
 
+function editComment(req, res) {
+  // find the taco using it's _id
+  Recipe.findById(req.params.recipeId)
+  .then(recipe => {
+    // find the comment using it's _id
+    const comment = recipe.comments.id(req.params.commentId)
+    // check to make sure user owns comment
+    if (comment.author.equals(req.user.profile._id)) {
+      // render a view passing the taco and comment and a title
+      res.render('recipes/editComment',{
+        recipe,
+        comment,
+        title: 'Update Comment'
+      })
+    } else {
+      throw new Error('🚫 Not authorized 🚫')
+    }
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/recipes')
+  })
+}
+
 export {
   index,
   newRecipe as new,
