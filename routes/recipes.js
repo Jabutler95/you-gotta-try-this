@@ -16,8 +16,11 @@ router.get('/:recipeId/edit', isLoggedIn, recipesCtrl.edit)
 router.post('/', isLoggedIn, recipesCtrl.create)
 // POST localhost:3000/recipes/:flightId/ingredients
 router.post('/:recipeId/ingredients', isLoggedIn, recipesCtrl.addIngredients)
+// POST localhost:3000/recipes/:recipeId/comments
+router.post('/:recipeId/comments', isLoggedIn, recipesCtrl.addComment)
 // PUT localhost:3000/recipes/:recipeId
 router.put('/:recipeId', isLoggedIn, recipesCtrl.update)
+// PUT localhost:3000/recipes/:recipeId/ingredients
 router.put('/:recipeId/ingredients', isLoggedIn, recipesCtrl.addIngredients)
 // DELETE localhost:3000/recipes/:recipeId
 router.delete('/:recipeId', isLoggedIn, recipesCtrl.delete)
