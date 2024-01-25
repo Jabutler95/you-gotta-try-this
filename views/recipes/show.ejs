@@ -36,10 +36,10 @@
         <%= comment.createdAt.toLocaleString() %>
         <% if (comment.author.equals(user?.profile._id)) { %>
           <form action="/recipes/<%= recipe._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-            <button class="btn edit-btn">🗑️</button>
+            <button class="btn edit-btn">Delete Comment</button>
           </form>
             <a href="/recipes/<%= recipe._id %>/comments/<%= comment._id %>/edit">
-              <button class="btn edit-btn">📝</button>
+              <button class="btn edit-btn">Edit Comment</button>
             </a>
         <% } %> 
       </li>
