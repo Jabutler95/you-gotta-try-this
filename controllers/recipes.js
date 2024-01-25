@@ -30,6 +30,7 @@ function newRecipe(req, res) {
 }
 
 async function makeNewRecipe(req, res) {
+  req.body.owner = req.user.profile._id
   console.log(req.body)
   try {
     const ingredientIdList = await addIngredients(req, res)
@@ -109,9 +110,8 @@ function edit(req, res) {
   .populate('ingredients')
   .then(recipe => {
     Ingredient.find({})
-    recipe.ingredients.push(req.body)
-    recipe.save()
     .then(ingredients => {
+      console.log(ingredients)
       res.render('recipes/edit', {
         recipe: recipe,
         title: 'Edit Recipe',
@@ -161,14 +161,10 @@ function addComment(req, res) {
 }
 
 function editComment(req, res) {
-  // find the taco using it's _id
   Recipe.findById(req.params.recipeId)
   .then(recipe => {
-    // find the comment using it's _id
     const comment = recipe.comments.id(req.params.commentId)
-    // check to make sure user owns comment
     if (comment.author.equals(req.user.profile._id)) {
-      // render a view passing the taco and comment and a title
       res.render('recipes/editComment',{
         recipe,
         comment,

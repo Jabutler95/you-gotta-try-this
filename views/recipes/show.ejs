@@ -14,9 +14,11 @@
       </ul>
     <div> Recipe Instructions:</div>
     <div><%= recipe.instructions %></div>
+    <% if (recipe.owner.equals(user?.profile._id)) { %>
     <a href="/recipes/<%= recipe._id %>/edit">
       <button>Edit Recipe</button>
     </a>
+    <% } %>
   </section>
   <h2>Comments</h2>
   <ul>

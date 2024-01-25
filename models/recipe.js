@@ -14,7 +14,8 @@ const recipeSchema =  new Schema({
   recipeName: String, 
   ingredients: [{type: Schema.Types.ObjectId, ref: 'Ingredient'}],
   instructions: String,
-  comments: [commentSchema]
+  comments: [commentSchema],
+  owner: { type: Schema.Types.ObjectId, ref: 'Profile' }
 }, {
   timestamps: true
 })

@@ -12,11 +12,11 @@
     <a 
     href="/recipes/new" class=<%= title === 'Add Recipe' ? 'active' : '' %>
     >
-      ADD RECIPE
+    <button>ADD A RECIPE</button>
   </a>
   <% if (user && user.profile) { %>
     <a href="/profiles/<%= user.profile._id %>" class="left">
-      My Profile
+      <button>VIEW PROFILE</button>
     </a>
   <% } %>
     <% if (user) { %>
