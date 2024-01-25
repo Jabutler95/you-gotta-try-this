@@ -18,6 +18,41 @@
       <button>Edit Recipe</button>
     </a>
   </section>
+  <h2>Comments</h2>
+  <ul>
+    <% recipe.comments?.forEach(comment => { %>
+      <li>
+        <%= comment.content%> 
+        -&nbsp; 
+        <img 
+          class="comment-photo" 
+          src="<%= comment.author.avatar %>" 
+          alt="avatar of commenter"
+        > 
+        <a href="/profiles/<%= comment.author._id %>">
+          <%= comment.author.name %>
+        </a> 
+        &nbsp;at 
+        <%= comment.createdAt.toLocaleString() %>
+        <% if (comment.author.equals(user?.profile._id)) { %>
+          <form action="/recipes/<%= recipe._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+            <button class="btn edit-btn">🗑️</button>
+          </form>
+            <a href="/recipes/<%= recipe._id %>/comments/<%= comment._id %>/edit">
+              <button class="btn edit-btn">📝</button>
+            </a>
+        <% } %> 
+      </li>
+    <% }) %>
+  </ul>
+  <% if (user) { %>
+    <h3>Add a comment</h3>
+    <form action="/recipes/<%= recipe._id %>/comments" method="POST">
+      <textarea name="content"></textarea><br>
+      <button type="submit">Add Comment</button>
+    </form>
+  <% } %>
+</section>
 </main>
 
 
