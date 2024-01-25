@@ -1,16 +1,22 @@
 <%- include('../partials/html-head') %>
-
+<link rel="stylesheet" href="/stylesheets/recipes/index.css">
 <%- include('../partials/nav') %>
 
 <main>
-  <h1>Recipes</h1>
-  <ul>
+  <div class="index-container">
+    <div class="index-title">
+      <h1>Recipes</h1>
+    </div>
     <% recipes.forEach(recipe => { %>
-      <li> 
-        <a href="/recipes/<%= recipe._id %>"><%= recipe.recipeName %></a> 
-      </li>
+    <div class="recipe-div">
+      <div class="recipe-name-div"><%= recipe.recipeName %></div>
+      <a href="/recipes/<%= recipe._id %>"><button class="details-btn">See Recipe Details</button></a>
+    </div>
     <% }) %>
-  </ul>
+  </div>
+  
+
+  
 </main>
 
 <%- include('../partials/footer') %>

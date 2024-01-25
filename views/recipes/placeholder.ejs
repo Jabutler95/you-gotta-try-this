@@ -15,3 +15,15 @@ this is the body +++++ {
   unit: [ 'millileter(s)', 'millileter(s)' ],
   instructions: 'lasdkjf;lasdkjf;laskdjflksajd'
 }
+
+
+<main>
+  <h1>Recipes</h1>
+  <ul>
+    <% recipes.forEach(recipe => { %>
+      <li> 
+        <a href="/recipes/<%= recipe._id %>"><%= recipe.recipeName %></a> 
+      </li>
+    <% }) %>
+  </ul>
+</main>

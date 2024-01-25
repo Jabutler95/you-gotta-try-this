@@ -1,0 +1,24 @@
+.index-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.recipe-div {
+  color: whitesmoke;
+  background-color: #00A6FB;
+  border: 2px solid black;
+  border-radius: 32px;
+  margin: 5px;
+  height: 80px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.detials-btn {
+  margin: 5px;
+  padding: 5px;
+}
