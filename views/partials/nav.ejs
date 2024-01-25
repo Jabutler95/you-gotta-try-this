@@ -14,7 +14,11 @@
     >
       ADD RECIPE
   </a>
-  <a href="/profiles/:profileId">Profile</a>
+  <% if (user && user.profile) { %>
+    <a href="/profiles/<%= user.profile._id %>" class="left">
+      My Profile
+    </a>
+  <% } %>
     <% if (user) { %>
       <a href="/auth/logout" class="right">
         <button type="submit">Logout</button>
