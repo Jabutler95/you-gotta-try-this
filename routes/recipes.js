@@ -20,6 +20,8 @@ router.post('/:recipeId/ingredients', isLoggedIn, recipesCtrl.addIngredients)
 router.get('/:recipeId/comments/:commentId/edit', isLoggedIn, recipesCtrl.editComment)
 // POST localhost:3000/recipes/:recipeId/comments
 router.post('/:recipeId/comments', isLoggedIn, recipesCtrl.addComment)
+// PUT localhost:3000/recipes/:recipeId/comments/:commentId
+router.put('/:recipeId/comments/:commentId', isLoggedIn, recipesCtrl.updateComment)
 // PUT localhost:3000/recipes/:recipeId
 router.put('/:recipeId', isLoggedIn, recipesCtrl.update)
 // PUT localhost:3000/recipes/:recipeId/ingredients
