@@ -140,6 +140,26 @@ function deleteRecipe(req, res) {
   })
 }
 
+function addComment(req, res) {
+  Recipe.findById(req.params.recipeId)
+  .then(recipe => {
+    req.body.author = req.user.profile._id
+    recipe.comments.push(req.body)
+    recipe.save()
+    .then(()=> {
+      res.redirect(`/recipes/${recipe._id}`)
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/recipes')
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/recipes')
+  })
+}
+
 export {
   index,
   newRecipe as new,
@@ -148,5 +168,6 @@ export {
   edit,
   update,
   deleteRecipe as delete,
-  addIngredients
+  addIngredients,
+  addComment
 }
