@@ -208,6 +208,30 @@ function updateComment(req, res) {
   })
 }
 
+function deleteComment(req, res) {
+  Recipe.findById(req.params.recipeId)
+  .then(recipe => {
+    const comment = recipe.comments.id(req.params.commentId)
+    if (comment.author.equals(req.user.profile._id)) {
+      recipe.comments.remove(comment)
+      recipe.save()
+      .then(() => {
+        res.redirect(`/recipes/${recipe._id}`)
+      })
+      .catch(err => {
+        console.log(err)
+        res.redirect('/recipes')
+      })
+    } else {
+      throw new Error('🚫 Not authorized 🚫')
+    }
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/recipes')
+  })
+}
+
 export {
   index,
   newRecipe as new,
@@ -220,4 +244,5 @@ export {
   addComment,
   updateComment,
   editComment,
+  deleteComment,
 }
