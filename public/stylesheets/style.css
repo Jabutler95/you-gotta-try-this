@@ -13,7 +13,7 @@ html {
 
 body {
   background-color: #6C809A;
-  color: #3F403F;
+  color: black;
   /* Use a system font, if none are available use any found sans-sarif font */
   font-family: system-ui, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 
     'Helvetica Neue', sans-serif;
@@ -38,4 +38,37 @@ main {
 
 .right {
   margin-left: auto;
+}
+
+.nav-btns {
+  background-color: #00A6FB;
+  border-style: groove;
+  border-radius: 8px;
+  margin: 5px;
+  font-size: large;
+}
+
+.nav-btns:hover {
+  background-color: #14213D;
+  color: white;
+}
+
+.home-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-btns {
+  background-color: #00A6FB;
+  border-style: groove;
+  border-radius: 8px;
+  margin: 5px;
+  font-size: large;
+}
+
+.home-btns:hover {
+  background-color: #6C809A;
+  color: whitesmoke;
 }

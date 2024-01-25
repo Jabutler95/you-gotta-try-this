@@ -94,13 +94,13 @@ function show(req, res) {
       console.log(recipe)
       res.render('recipes/show', {
         recipe: recipe,
-        title: 'Recipe Detail',
+        title: 'Recipe Details',
       })
     })
-    .catch(err => {
-      console.log(err)
-      res.redirect('/')
-    })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
+  })
 }
 
 

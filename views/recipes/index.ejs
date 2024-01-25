@@ -10,7 +10,9 @@
     <% recipes.forEach(recipe => { %>
     <div class="recipe-div">
       <div class="recipe-name-div"><%= recipe.recipeName %></div>
-      <a href="/recipes/<%= recipe._id %>"><button class="details-btn">See Recipe Details</button></a>
+      <div class="recipe-btns-div">
+      <a href="/recipes/<%= recipe._id %>"><button class="details-btn">View Recipe</button></a>
+      </div>
     </div>
     <% }) %>
   </div>

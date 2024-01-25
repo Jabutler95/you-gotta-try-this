@@ -11,7 +11,7 @@
         <% recipe.ingredients.forEach(ingredient => { %>
           <li><%= ingredient.ingredientName %> - <%= ingredient.quantity %> <%= ingredient.unit %></li>
           <% if (recipe.owner.equals(user?.profile._id)) { %>
-            <form action="/recipes/<%= recipe._id %>/ingredients/<%= ingredient._id %>?_method=DELETE" method="POST"><button type="submit">Delete Ingredient</button>
+            <form action="/recipes/<%= recipe._id %>/ingredients/<%= ingredient._id %>?_method=DELETE" method="POST"><button type="submit" class="show-btns">Delete Ingredient</button>
             </form>
         <% } %>
         <% }) %>
@@ -20,7 +20,7 @@
     <div><%= recipe.instructions %></div>
     <% if (recipe.owner.equals(user?.profile._id)) { %>
     <a href="/recipes/<%= recipe._id %>/edit">
-      <button>Edit Recipe</button>
+      <button class="show-btns">Edit Recipe</button>
     </a>
     <% } %>
   </section>
@@ -42,10 +42,10 @@
         <%= comment.createdAt.toLocaleString() %>
         <% if (comment.author.equals(user?.profile._id)) { %>
           <form action="/recipes/<%= recipe._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-            <button class="btn edit-btn">Delete Comment</button>
+            <button class="show-btns">Delete Comment</button>
           </form>
             <a href="/recipes/<%= recipe._id %>/comments/<%= comment._id %>/edit">
-              <button class="btn edit-btn">Edit Comment</button>
+              <button class="show-btns">Edit Comment</button>
             </a>
         <% } %> 
       </li>
@@ -55,7 +55,7 @@
     <h3>Add a comment</h3>
     <form action="/recipes/<%= recipe._id %>/comments" method="POST">
       <textarea name="content"></textarea><br>
-      <button type="submit">Add Comment</button>
+      <button type="submit" class="show-btns">Add Comment</button>
     </form>
   <% } %>
 </section>

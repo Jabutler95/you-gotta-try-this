@@ -1,4 +1,5 @@
 <%- include('./partials/html-head') %>
+
 <% if (!user) { %>
   <script defer src="https://accounts.google.com/gsi/client"></script>
 <% } %>
@@ -10,56 +11,55 @@
 
   
 <main>
-  <h1>You Gotta Try This!</h1>
-  <% if (user?.profile.avatar) { %>
-    <div>
-      <img
-        src="<%= user.profile.avatar %>"
-        alt="<%= user.profile.name %> avatar"
-      />
-    </div>
-  <% } %>
-  <% if (user) { %>
-    <h3>Let's get cooking <%= user ? user.profile.name : "Chef" %>!</h3>
+  <div class="home-page-container">
+    <h1>You Gotta Try This!</h1>
+    <% if (user?.profile.avatar) { %>
+      <div>
+        <img
+          src="<%= user.profile.avatar %>"
+          alt="<%= user.profile.name %> avatar"
+        />
+      </div>
+    <% } %>
+    <% if (user) { %>
+      <h3>Let's get cooking <%= user ? user.profile.name : "Chef" %>!</h3>
+      <a 
+      href="/profiles/<%= user.profile._id %>" %>
+    >
+    <button class="home-btns">View Your Profile</button>
+    </a>
     <a 
-    href="/profiles/<%= user.profile._id %>" %>
-  >
-  <button>View Your Profile</button>
-  </a>
-  <a 
-    href="/recipes" %>
-  >
-  <button>View All Recipes</button>
-  </a>
-  <a href="/auth/logout">
-    <button type="submit">Logout</button>
-  </a>
-  <% } else { %>
-    <div 
-      id="g_id_onload"
-      data-client_id="<%= googleClientID %>"
-      data-login_uri="/auth/google"
-      data-auto_prompt="false"
-      data-prompt_parent_id="g_id_onload"
-    ></div>
-    <div 
-      class="g_id_signin right"
-      data-type="standard"
-      data-size="large"
-      data-theme="outline"
-      data-text="sign_in_with"
-      data-shape="rectangular"
-      data-logo_alignment="left"
-    ></div>
-    <a 
-    href="/recipes" %>
-  >
-  <button>Continue as guest</button>
-  </a>
-  <% } %>
-
-
-
+      href="/recipes" %>
+    >
+    <button class="home-btns">View All Recipes</button>
+    </a>
+    <a href="/auth/logout">
+      <button type="submit" class="home-btns">Logout</button>
+    </a>
+    <% } else { %>
+      <div 
+        id="g_id_onload"
+        data-client_id="<%= googleClientID %>"
+        data-login_uri="/auth/google"
+        data-auto_prompt="false"
+        data-prompt_parent_id="g_id_onload"
+      ></div>
+      <div 
+        class="g_id_signin right"
+        data-type="standard"
+        data-size="large"
+        data-theme="outline"
+        data-text="sign_in_with"
+        data-shape="rectangular"
+        data-logo_alignment="left"
+      ></div>
+      <a 
+      href="/recipes" %>
+    >
+    <button class="home-btns">Continue as guest</button>
+    </a>
+    <% } %>
+  </div>  
 </main>
 
 

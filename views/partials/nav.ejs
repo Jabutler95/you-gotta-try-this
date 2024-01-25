@@ -7,21 +7,21 @@
     <a 
       href="/recipes" class=<%= title === 'All Recipes' ? 'active' : '' %>
     >
-    <button>ALL RECIPES</button>
+    <button class="nav-btns">ALL RECIPES</button>
     </a>
     <a 
     href="/recipes/new" class=<%= title === 'Add Recipe' ? 'active' : '' %>
     >
-    <button>ADD A RECIPE</button>
+    <button class="nav-btns">ADD A RECIPE</button>
   </a>
   <% if (user && user.profile) { %>
     <a href="/profiles/<%= user.profile._id %>" class="left">
-      <button>VIEW PROFILE</button>
+      <button class="nav-btns">VIEW PROFILE</button>
     </a>
   <% } %>
     <% if (user) { %>
       <a href="/auth/logout" class="right">
-        <button type="submit">Logout</button>
+        <button type="submit" class="nav-btns">LOGOUT</button>
       </a>
     <% } else { %>
       <div 
