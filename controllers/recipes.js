@@ -228,6 +228,28 @@ function deleteComment(req, res) {
   })
 }
 
+function deleteIngredient(req, res) {
+  Recipe.findById(req.params.recipeId)
+  .populate('ingredients')
+  .then(recipe => {
+    Ingredient.findByIdAndDelete(req.params.ingredientId)
+    .then(ingredient => {
+      res.redirect(`/recipes/${recipe._id}`)
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/recipes')
+    })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/recipes')
+    })
+  })
+}
+      
+
+
+
 export {
   index,
   newRecipe as new,
@@ -241,4 +263,5 @@ export {
   updateComment,
   editComment,
   deleteComment,
+  deleteIngredient
 }
