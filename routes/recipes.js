@@ -26,6 +26,8 @@ router.put('/:recipeId/comments/:commentId', isLoggedIn, recipesCtrl.updateComme
 router.put('/:recipeId', isLoggedIn, recipesCtrl.update)
 // PUT localhost:3000/recipes/:recipeId/ingredients
 router.put('/:recipeId/ingredients', isLoggedIn, recipesCtrl.addIngredients)
+// DELETE localhost:3000/recipes/:recipeId/ingredients/:ingredientId
+router.delete('/:recipeId/ingredients/:ingredientId', isLoggedIn, recipesCtrl.deleteIngredient)
 // DELETE localhost:3000/recipes/:recipeId/comments/:commentId
 router.delete('/:recipeId/comments/:commentId', isLoggedIn, recipesCtrl.deleteComment)
 // DELETE localhost:3000/recipes/:recipeId

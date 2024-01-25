@@ -22,14 +22,12 @@
   >
   <label for="recipe-input">Recipe Name:</label>
   <input type="text" name="recipeName" id="recipe-input" value="<%= recipe.recipeName %>">
-  
   <div>Ingredients used in this recipe:</div>
   <ul>
     <% recipe.ingredients.forEach(ingredient => { %>
       <li><%= ingredient.ingredientName %> <%= ingredient.quantity %> <%= ingredient.unit %></li>
     <% }) %>
   </ul>
-
   <div id="ingredients-section">
     <label for="ingredient-name">Ingredient Name:</label>
     <input type="text" name="ingredientName" id="ingredient-name">
@@ -56,7 +54,6 @@
     </select>
   </div>
   <button type="button" id="add-ingredient-button">Add Another Ingredient</button>
-  
     <label for="instructions-input">Instructions:</label>
     <input type="text" name="instructions" id="instructions-input" value="<%= recipe.instructions %>">
     <button type="submit">Save Recipe Changes</button>

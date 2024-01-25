@@ -1,17 +1,7 @@
 <%- include('../partials/html-head') %>
 <link rel="stylesheet" href="/stylesheets/recipes/new.css" />
 <%- include('../partials/nav') %>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const addIngredientButton = document.getElementById('add-ingredient-button')
-    const ingredientsSection = document.getElementById('ingredients-section')
-    addIngredientButton.addEventListener('click', function() {
-      const newIngredientSection = ingredientsSection.cloneNode(true)
-      newIngredientSection.querySelector('.ingredient-quantity').value = ''
-      ingredientsSection.parentNode.insertBefore(newIngredientSection, addIngredientButton)
-    })
-  })
-</script>
+
 
 <main>
   <h1><%= title %></h1>
@@ -52,12 +42,16 @@
 
     <button type="submit">Add Recipe</button>
   </form>
-
-  
-
-  
-
-
-
 </main>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const addIngredientButton = document.getElementById('add-ingredient-button')
+    const ingredientsSection = document.getElementById('ingredients-section')
+    addIngredientButton.addEventListener('click', function() {
+      const newIngredientSection = ingredientsSection.cloneNode(true)
+      newIngredientSection.querySelector('.ingredient-quantity').value = ''
+      ingredientsSection.parentNode.insertBefore(newIngredientSection, addIngredientButton)
+    })
+  })
+</script>
 <%- include('../partials/footer') %>
