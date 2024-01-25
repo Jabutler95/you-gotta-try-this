@@ -29,23 +29,11 @@ function newRecipe(req, res) {
   })
 }
 
-
-// function create(req, res) {
-//   Recipe.create(req.body)
-//   .then(recipe => {
-//     res.redirect('/recipes')
-//   })
-//   .catch(err => {
-//     console.log(err)
-//     res.redirect('/recipes/new')
-//   })
-// }
-
 async function makeNewRecipe(req, res) {
-  console.log(req.body);
+  console.log(req.body)
   try {
     const ingredientIdList = await addIngredients(req, res)
-    console.log(ingredientIdList);
+    console.log(ingredientIdList)
     req.body.ingredients = ingredientIdList
     const recipe = await Recipe.create(req.body)
     res.redirect(`/recipes/${recipe._id}`)
@@ -56,44 +44,65 @@ async function makeNewRecipe(req, res) {
 }
 
 async function addIngredients(req, res) {
-  const ingredientIdList = []
-  let idx = 0
+console.log('this is the body +++++',req.body)
+const ingredientIdList = []
+let idx = 0
+if (Array.isArray(req.body.unit)) {
   for (let ingredient in req.body.ingredientName) {
+      const newIngredientObject = {}
+      newIngredientObject.ingredientName = req.body.ingredientName[idx]
+      newIngredientObject.quantity = req.body.quantity[idx]
+      newIngredientObject.unit = req.body.unit[idx]
+      const ingredientToPush = await Ingredient.create(newIngredientObject)
+      ingredientIdList.push(ingredientToPush._id)
+      idx++
+    }
+  } else {
     const newIngredientObject = {}
-    newIngredientObject.ingredientName = req.body.ingredientName[idx]
-    newIngredientObject.quantity = req.body.quantity[idx]
-    newIngredientObject.unit = req.body.unit[idx]
+    newIngredientObject.ingredientName = req.body.ingredientName
+    newIngredientObject.quantity = req.body.quantity
+    newIngredientObject.unit = req.body.unit
     const ingredientToPush = await Ingredient.create(newIngredientObject)
     ingredientIdList.push(ingredientToPush._id)
-    idx++
   }
   return ingredientIdList
 }
 
+async function update(req, res) {
+  // console.log('this is the req body',req.body)
+  try {
+  const recipe = await Recipe.findById(req.params.recipeId)
+  // console.log('recipe before push ===>',recipe);
+  const ingredientIdList = await addIngredients(req, res)
+  // console.log('ingredient id list ===>',ingredientIdList);
+  recipe.ingredients.push(...ingredientIdList)
+  // console.log('recipe after push ===>',recipe);
+  recipe.save()
+  res.redirect(`/recipes/${recipe._id}`)
+  }
+  catch (error) {
+    console.log(error)
+    res.redirect('/recipes')
+  }
+}
+
 function show(req, res) {
   Recipe.findById(req.params.recipeId)
-  .populate([
-    {path: "ingredients"}
-  ])
-  .then(recipe => {
-    Ingredient.find(req.params.ingredientId)
-    .then(ingredients => {
+    .populate('ingredients')
+    .then(recipe => {
+      console.log(recipe)
       res.render('recipes/show', {
         recipe: recipe,
         title: 'Recipe Detail',
-        ingredients: ingredients
       })
     })
     .catch(err => {
       console.log(err)
       res.redirect('/')
     })
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect('/')
-  })
 }
+
+
 
 function edit(req, res) {
   Recipe.findById(req.params.recipeId)
@@ -120,17 +129,6 @@ function edit(req, res) {
   })
 }
 
-function update(req, res) {
-  Recipe.findByIdAndUpdate(req.params.recipeId, req.body, {new: true})
-  .then(recipe => {
-    res.redirect(`/recipes/${recipe._id}`)
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect('/recipes')
-  })
-}
-
 function deleteRecipe(req, res) {
   Recipe.findByIdAndDelete(req.params.recipeId)
   .then(recipe => {
@@ -141,25 +139,6 @@ function deleteRecipe(req, res) {
     res.redirect('/recipes')
   })
 }
-
-// function addIngredients(req, res) {
-//   Recipe.findById(req.params.recipeId)
-//   .then(recipe => {
-//     recipe.ingredients.push(req.body.ingredientId)
-//     recipe.save()
-//     .then(() => {
-//       res.redirect(`/recipes/${recipe._id}`)
-//     })
-//     .catch(err => {
-//       console.log(err)
-//       res.redirect('/recipes')
-//     })
-//   })
-//   .catch(err => {
-//     console.log(err)
-//     res.redirect('/recipes')
-//   })
-// }
 
 export {
   index,
