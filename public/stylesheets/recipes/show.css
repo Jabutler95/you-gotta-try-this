@@ -15,6 +15,7 @@
   border-radius: 8px;
   border-style: groove;
   color: white;
+  display: flex;
 }
 
 .show-btns:hover {
@@ -46,6 +47,7 @@ textarea {
   justify-content: center;
   align-items: center;
   font-size: 56px;
+  text-transform: uppercase;
 }
 
 
@@ -58,8 +60,37 @@ textarea {
   border-radius: 8px;
   padding: 48px;
   margin: 16px;
+  width: 50vw;
 }
 
 #recipe-instructions {
   width: 32vw;
+  overflow-wrap: break-word;
+}
+
+#commnet-btns-div {
+  display: flex;
+}
+
+.comment-btns {
+  margin: 5px;
+  padding: 5px;
+  background-color: #00A6FB;
+  border-radius: 8px;
+  border-style: groove;
+  color: white;
+}
+
+.comment-btns:hover {
+  background-color: #FDFFFC;
+  color: #14213D;
+}
+
+.comments {
+  background-color: #FDFFFC;
+  border: 5px solid #14213D;
+  border-radius: 8px;
+  padding: 8px;
+  width: 40vw;
+  overflow-wrap: break-word;
 }

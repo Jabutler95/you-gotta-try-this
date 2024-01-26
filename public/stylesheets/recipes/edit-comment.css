@@ -1,0 +1,39 @@
+h1 {
+  font-family: 'Caveat', cursive, sans-serif;
+  font-size: 75px;
+}
+
+label {
+  font-family: 'Caveat', cursive, sans-serif;
+  font-size: 48px;
+}
+
+textarea {
+  font-size: 16px;
+  resize: none;
+  height: 20vh;
+  width: 40vw;
+}
+
+
+#update-btn {
+  margin: 5px;
+  padding: 5px;
+  background-color: #00A6FB;
+  border-radius: 8px;
+  border-style: groove;
+  color: white;
+}
+
+#update-btn:hover {
+  background-color: #6C809A;
+  color: #FDFFFC;
+  border-color: #FDFFFC;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

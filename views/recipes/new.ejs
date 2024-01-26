@@ -8,20 +8,20 @@
   <div id="form-container">
     <form action="/recipes" method="POST">
       <label for="recipe-input" class="labels">Recipe Name:</label>
-      <input type="text" name="recipeName" id="recipe-input">
+      <input type="text" name="recipeName" id="recipe-input" class="input-field">
 
       <div id="ingredients-section">
         <div id="ingredient-name-container" class="container-div">
           <label for="ingredient-name" class="labels">Ingredient Name:</label>
-          <input type="text" name="ingredientName" id="ingredient-name">
+          <input type="text" name="ingredientName" id="ingredient-name" class="input-field">
         </div>
         <div id="ingredient-quantity-container" class="container-div">
           <label for="ingredient-quantity" class="labels">Quantity:</label>
-          <input type="text" name="quantity" class="ingredient-quantity">
+          <input type="text" name="quantity" id="ingredient-quantity" class="input-field">
         </div>
         <div id="ingredient-unit-container" class="container-div">
           <label for="ingredient-unit" class="labels">Unit of Measurement:</label>
-          <select name="unit" class="ingredient-unit">
+          <select name="unit" id="ingredient-unit" class="input-field">
             <option value="millileter(s)">millileter(s)</option>
             <option value="liter(s)">liter(s)</option>
             <option value="deciliter(s)">deciliter(s)</option>
@@ -44,7 +44,7 @@
       <button type="button" id="add-ingredient-button" class="new-btns">Add Another Ingredient</button>
       <div id="instructions-input-container" class="container-div">
         <label for="instructions-input" class="labels">Instructions:</label>
-        <input type="text" name="instructions" id="instructions-input" placeholder="First, ">
+        <input type="text" name="instructions" id="instructions-input" class="input-field">
       </div>
       <button type="submit" class="new-btns">Add Recipe</button>
     </form>

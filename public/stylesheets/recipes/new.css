@@ -24,6 +24,7 @@
   padding-bottom: 20px;
   display: flex;
   justify-content: flex-start;
+  align-items: flex-end;
 }
 
 .new-btns {
@@ -38,4 +39,9 @@
 .new-btns:hover {
   background-color: #FDFFFC;
   color: #14213D;
+}
+
+.input-field {
+  font-size: 16px;
+  height: fit-content;
 }

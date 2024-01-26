@@ -30,26 +30,21 @@
   <h2 class="title-text">Comments</h2>
   <ul class="ingredient-text">
     <% recipe.comments?.forEach(comment => { %>
-      <li>
+      <li class="comments">
         <%= comment.content%> 
         -&nbsp; 
-        <img 
-          class="comment-photo" 
-          src="<%= comment.author.avatar %>" 
-          alt="avatar of commenter"
-        > 
-        <a href="/profiles/<%= comment.author._id %>">
           <%= comment.author.name %>
-        </a> 
         &nbsp;at 
         <%= comment.createdAt.toLocaleString() %>
         <% if (comment.author.equals(user?.profile._id)) { %>
           <form action="/recipes/<%= recipe._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-            <button class="show-btns">Delete Comment</button>
+            <div id="comment-btns-div">
+              <button class="comment-btns">Delete Comment</button>
           </form>
             <a href="/recipes/<%= recipe._id %>/comments/<%= comment._id %>/edit">
-              <button class="show-btns">Edit Comment</button>
-            </a>
+                <button class="comment-btns">Edit Comment</button>
+              </a>
+            </div>
         <% } %> 
       </li>
     <% }) %>

@@ -10,6 +10,7 @@ const commentSchema = new Schema({
   timestamps: true
 })
 
+// Ice box code 
 // const tagShema = new Schema({
 //   name: 
 // })
