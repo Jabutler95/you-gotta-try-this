@@ -9,6 +9,9 @@ You Gotta Try This! is the place where all the most delicious recipes live! User
 ### [**Go find something delicious here!**](https://you-gotta-try-this.fly.dev)
 
 
+[**Take a look at my planning materials here!**](https://you-gotta-try-this.fly.dev)
+
+
 ---
 
 ## Why recipes?

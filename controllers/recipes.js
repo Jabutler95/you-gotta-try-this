@@ -31,10 +31,8 @@ function newRecipe(req, res) {
 
 async function makeNewRecipe(req, res) {
   req.body.owner = req.user.profile._id
-  console.log(req.body)
   try {
     const ingredientIdList = await addIngredients(req, res)
-    console.log(ingredientIdList)
     req.body.ingredients = ingredientIdList
     const recipe = await Recipe.create(req.body)
     res.redirect(`/recipes/${recipe._id}`)
@@ -45,7 +43,6 @@ async function makeNewRecipe(req, res) {
 }
 
 async function addIngredients(req, res) {
-console.log('this is the body +++++',req.body)
 const ingredientIdList = []
 let idx = 0
 if (Array.isArray(req.body.unit)) {
@@ -70,16 +67,12 @@ if (Array.isArray(req.body.unit)) {
 }
 
 async function update(req, res) {
-  // console.log('this is the req body',req.body)
   try {
   const recipe = await Recipe.findById(req.params.recipeId)
   recipe.recipeName = req.body.recipeName;
   recipe.instructions = req.body.instructions;
-  // console.log('recipe before push ===>',recipe);
   const ingredientIdList = await addIngredients(req, res)
-  // console.log('ingredient id list ===>',ingredientIdList);
   recipe.ingredients.push(...ingredientIdList)
-  // console.log('recipe after push ===>',recipe);
   recipe.save()
   res.redirect(`/recipes/${recipe._id}`)
   }
@@ -93,7 +86,6 @@ function show(req, res) {
   Recipe.findById(req.params.recipeId)
     .populate('ingredients')
     .then(recipe => {
-      console.log(recipe)
       res.render('recipes/show', {
         recipe: recipe,
         title: 'Recipe Details',
@@ -113,7 +105,6 @@ function edit(req, res) {
   .then(recipe => {
     Ingredient.find({})
     .then(ingredients => {
-      console.log(ingredients)
       res.render('recipes/edit', {
         recipe: recipe,
         title: 'Edit Recipe',

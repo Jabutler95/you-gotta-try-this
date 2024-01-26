@@ -6,12 +6,12 @@
 }
 
 .recipe-div {
-  color: whitesmoke;
-  background-color: #14213D;
-  border: 2px solid black;
+  color: black;
+  background-color: #FDFFFC;
+  border: 5px solid #14213D;
   border-radius: 32px;
   margin: 16px;
-  height: 80px;
+  height: 100px;
   width: 250px;
   display: flex;
   flex-direction: column;
@@ -34,8 +34,8 @@
 }
 
 .details-btn:hover {
-  background-color: #14213D;
-  color: whitesmoke;
+  background-color: #FDFFFC;
+  color: black;
 }
 
 .title-text {
