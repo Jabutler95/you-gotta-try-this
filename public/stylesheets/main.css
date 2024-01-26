@@ -24,6 +24,7 @@ nav {
   background-color: #14213D;
   color: white;
   display: flex;
+  justify-content: space-evenly;
   align-items: center;
   padding: 10px;
   min-height: 60px;
@@ -42,6 +43,7 @@ main {
   border-radius: 8px;
   margin: 5px;
   font-size: large;
+  color: #FDFFFC;
 }
 
 .nav-btns:hover {
