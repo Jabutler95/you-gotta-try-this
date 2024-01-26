@@ -3,10 +3,10 @@
 <%- include('../partials/nav') %>
 
 <main>
-  <h1><%= title %></h1>
+  <h1 class="title-text"><%= title %></h1>
   <section>
     <div><%= recipe.recipeName %></div>
-    <div>Ingredients:</div>
+    <div class="title-text">Ingredients:</div>
       <ul>
         <% recipe.ingredients.forEach(ingredient => { %>
           <li><%= ingredient.ingredientName %> - <%= ingredient.quantity %> <%= ingredient.unit %></li>
@@ -16,7 +16,7 @@
         <% } %>
         <% }) %>
       </ul>
-    <div> Recipe Instructions:</div>
+    <div class="title-text"> Recipe Instructions:</div>
     <div><%= recipe.instructions %></div>
     <% if (recipe.owner.equals(user?.profile._id)) { %>
     <a href="/recipes/<%= recipe._id %>/edit">
@@ -24,7 +24,7 @@
     </a>
     <% } %>
   </section>
-  <h2>Comments</h2>
+  <h2 class="title-text">Comments</h2>
   <ul>
     <% recipe.comments?.forEach(comment => { %>
       <li>
@@ -52,7 +52,7 @@
     <% }) %>
   </ul>
   <% if (user) { %>
-    <h3>Add a comment</h3>
+    <h3 class="title-text">Add a comment</h3>
     <form action="/recipes/<%= recipe._id %>/comments" method="POST">
       <textarea name="content"></textarea><br>
       <button type="submit" class="show-btns">Add Comment</button>

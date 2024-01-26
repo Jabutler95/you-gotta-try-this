@@ -36,3 +36,8 @@
   background-color: #14213D;
   color: whitesmoke;
 }
+
+.title-text {
+  font-family: 'Caveat', cursive, sans-serif;
+  font-size: 50px;
+}

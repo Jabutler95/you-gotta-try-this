@@ -12,7 +12,7 @@
   
 <main>
   <div class="home-page-container">
-    <h1>You Gotta Try This!</h1>
+    <h1 class="title-text">You Gotta Try This!</h1>
     <% if (user?.profile.avatar) { %>
       <div>
         <img
@@ -22,7 +22,7 @@
       </div>
     <% } %>
     <% if (user) { %>
-      <h3>Let's get cooking <%= user ? user.profile.name : "Chef" %>!</h3>
+      <h3 id="get-cooking-text">Let's get cooking <%= user ? user.profile.name : "Chef" %>!</h3>
       <a 
       href="/profiles/<%= user.profile._id %>" %>
     >
@@ -45,7 +45,7 @@
         data-prompt_parent_id="g_id_onload"
       ></div>
       <div 
-        class="g_id_signin right"
+        class="g_id_signin"
         data-type="standard"
         data-size="large"
         data-theme="outline"
@@ -56,8 +56,9 @@
       <a 
       href="/recipes" %>
     >
-    <button class="home-btns">Continue as guest</button>
+    <button class="home-btns" id="guest-btn">Continue as guest</button>
     </a>
+    <div id="home-welcome-text">Welcome!</div>
     <% } %>
   </div>  
 </main>
