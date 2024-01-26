@@ -4,26 +4,28 @@
 
 <main>
   <h1 class="main-title"><%= title %></h1>
-  <section>
-    <div class="title-text" id="recipe-name"><%= recipe.recipeName %></div>
-    <div class="title-text">Ingredients:</div>
-      <ul class="ingredient-text">
-        <% recipe.ingredients.forEach(ingredient => { %>
-          <li><%= ingredient.ingredientName %> - <%= ingredient.quantity %> <%= ingredient.unit %></li>
-          <% if (recipe.owner.equals(user?.profile._id)) { %>
-            <form action="/recipes/<%= recipe._id %>/ingredients/<%= ingredient._id %>?_method=DELETE" method="POST"><button type="submit" class="show-btns">Delete Ingredient</button>
-            </form>
-        <% } %>
-        <% }) %>
-      </ul>
-    <div class="title-text"> Recipe Instructions:</div>
-    <div class="ingredient-text" id="recipe-instructions"><%= recipe.instructions %></div>
-    <% if (recipe.owner.equals(user?.profile._id)) { %>
-    <a href="/recipes/<%= recipe._id %>/edit">
-      <button class="show-btns">Edit Recipe</button>
-    </a>
-    <% } %>
-  </section>
+  <div class="container-div">
+    <section>
+      <div class="title-text" id="recipe-name"><%= recipe.recipeName %></div>
+      <div class="title-text">Ingredients:</div>
+        <ul class="ingredient-text">
+          <% recipe.ingredients.forEach(ingredient => { %>
+            <li><%= ingredient.ingredientName %> - <%= ingredient.quantity %> <%= ingredient.unit %></li>
+            <% if (recipe.owner.equals(user?.profile._id)) { %>
+              <form action="/recipes/<%= recipe._id %>/ingredients/<%= ingredient._id %>?_method=DELETE" method="POST"><button type="submit" class="show-btns">Delete Ingredient</button>
+              </form>
+          <% } %>
+          <% }) %>
+        </ul>
+      <div class="title-text"> Recipe Instructions:</div>
+      <div class="ingredient-text" id="recipe-instructions"><%= recipe.instructions %></div>
+      <% if (recipe.owner.equals(user?.profile._id)) { %>
+      <a href="/recipes/<%= recipe._id %>/edit">
+        <button class="show-btns">Edit Recipe</button>
+      </a>
+      <% } %>
+    </section>
+  </div>
   <div class="line"></div>
   <h2 class="title-text">Comments</h2>
   <ul class="ingredient-text">

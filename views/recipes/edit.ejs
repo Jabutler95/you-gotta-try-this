@@ -1,7 +1,66 @@
 <%- include('../partials/html-head') %>
-
+<link rel="stylesheet" href="/stylesheets/recipes/edit.css">
 <%-  include('../partials/nav') %>
 
+<main>
+  <h1 id="main-title"><%= title %></h1>
+  <div id="edit-form-div">
+    <form 
+      id="edit-form"
+      action="/recipes/<%= recipe._id %>?_method=PUT"
+      method="POST"
+    >
+    <div class="container-div" id="recipe-name-div">
+      <label for="recipe-input" class="title-text">Recipe Name:</label>
+      <input type="text" name="recipeName" id="recipe-input" value="<%= recipe.recipeName %>">
+    </div>
+    <div class="container-div" id="ingredients-in-recipe-div">
+      <div class="title-text">Ingredients used in this recipe:</div>
+      <ul>
+        <% recipe.ingredients.forEach(ingredient => { %>
+          <li class="ingredient-name"><%= ingredient.ingredientName %> <%= ingredient.quantity %> <%= ingredient.unit %></li>
+        <% }) %>
+      </ul>
+    </div>
+    <div class="container-div" id="instructions-div">
+      <label for="instructions-input" class="title-text">Instructions:</label>
+      <input type="text" name="instructions" id="instructions-input" value="<%= recipe.instructions %>">
+    </div>
+    <div id="ingredient-form">
+      <div id="ingredients-section">
+        <label for="ingredient-name" class="labels" class="labels">Ingredient Name:</label>
+        <input type="text" name="ingredientName" id="ingredient-name" class="form-input">
+        <label for="ingredient-quantity" class="labels">Quantity:</label>
+        <input type="text" name="quantity" id="ingredient-quantity" class="form-input">
+        <label for="ingredient-unit" class="labels">Unit of Measurement:</label>
+        <select name="unit" id="ingredient-unit" class="form-input">
+          <option value="millileter(s)">millileter(s)</option>
+          <option value="liter(s)">liter(s)</option>
+          <option value="deciliter(s)">deciliter(s)</option>
+          <option value="teaspoon(s)">teaspoon(s)</option>
+          <option value="tablespoon(s)">tablespoon(s)</option>
+          <option value="fluid ounce(s)">fluid ounce(s)</option>
+          <option value="gill(s)">gill(s)</option>
+          <option value="cup(s)">cup(s)</option>
+          <option value="pint(s)">pint(s)</option>
+          <option value="quart(s)">quart(s)</option>
+          <option value="gallon(s)">gallon(s)</option>
+          <option value="milligram(s)">milligram(s)</option>
+          <option value="gram(s)">gram(s)</option>
+          <option value="kilogram(s)">kilogram(s)</option>
+          <option value="pound(s)">pound(s)</option>
+          <option value="ounce(s)">ounce(s)</option>
+        </select>
+      </div>
+      <button type="button" id="add-ingredient-button" class="edit-btns">Add Another Ingredient</button>
+    </div>
+      <button type="submit" class="edit-btns">Save Recipe Changes</button>
+    </form>
+  </div>
+  <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
+    <button type="submit" class="edit-btns">Delete Recipe</button>
+  </form>
+</main>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const addIngredientButton = document.getElementById('add-ingredient-button')
@@ -13,55 +72,6 @@
     })
   })
 </script>
-<main>
-  <h1><%= title %></h1>
-  <form 
-    id="edit-form"
-    action="/recipes/<%= recipe._id %>?_method=PUT"
-    method="POST"
-  >
-  <label for="recipe-input">Recipe Name:</label>
-  <input type="text" name="recipeName" id="recipe-input" value="<%= recipe.recipeName %>">
-  <div>Ingredients used in this recipe:</div>
-  <ul>
-    <% recipe.ingredients.forEach(ingredient => { %>
-      <li><%= ingredient.ingredientName %> <%= ingredient.quantity %> <%= ingredient.unit %></li>
-    <% }) %>
-  </ul>
-  <div id="ingredients-section">
-    <label for="ingredient-name">Ingredient Name:</label>
-    <input type="text" name="ingredientName" id="ingredient-name">
-    <label for="ingredient-quantity">Quantity:</label>
-    <input type="text" name="quantity" class="ingredient-quantity">
-    <label for="ingredient-unit">Unit of Measurement:</label>
-    <select name="unit" class="ingredient-unit">
-      <option value="millileter(s)">millileter(s)</option>
-      <option value="liter(s)">liter(s)</option>
-      <option value="deciliter(s)">deciliter(s)</option>
-      <option value="teaspoon(s)">teaspoon(s)</option>
-      <option value="tablespoon(s)">tablespoon(s)</option>
-      <option value="fluid ounce(s)">fluid ounce(s)</option>
-      <option value="gill(s)">gill(s)</option>
-      <option value="cup(s)">cup(s)</option>
-      <option value="pint(s)">pint(s)</option>
-      <option value="quart(s)">quart(s)</option>
-      <option value="gallon(s)">gallon(s)</option>
-      <option value="milligram(s)">milligram(s)</option>
-      <option value="gram(s)">gram(s)</option>
-      <option value="kilogram(s)">kilogram(s)</option>
-      <option value="pound(s)">pound(s)</option>
-      <option value="ounce(s)">ounce(s)</option>
-    </select>
-  </div>
-  <button type="button" id="add-ingredient-button">Add Another Ingredient</button>
-    <label for="instructions-input">Instructions:</label>
-    <input type="text" name="instructions" id="instructions-input" value="<%= recipe.instructions %>">
-    <button type="submit">Save Recipe Changes</button>
-  </form>
-  <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
-    <button type="submit">Delete Recipe</button>
-  </form>
-</main>
 
 
 <%- include('../partials/footer') %>
