@@ -1,6 +1,6 @@
 # You Gotta Try This!
 ---
-![Alt text](images/screenshot.png)
+![Alt text](public/assests/images/screenshot.png)
 
 
 ## Getting Started: 
