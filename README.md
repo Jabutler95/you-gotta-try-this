@@ -9,7 +9,7 @@ You Gotta Try This! is the place where all the most delicious recipes live! User
 ### [**Go find something delicious here!**](https://you-gotta-try-this.fly.dev)
 
 
-[**Take a look at my planning materials here!**](https://you-gotta-try-this.fly.dev)
+[**Take a look at my planning materials here!**](https://trello.com/b/8EypxnL4/you-gotta-try-this)
 
 
 ---
@@ -22,7 +22,7 @@ I chose to build this application because cooking has always been a passion of m
 
 ## Technologies Used: 
 
-GitHub, HTML, CSS, JavaScript, Node, Nodemon, MongoDB, Trello
+GitHub, HTML, CSS, JavaScript, Node.js, Nodemon, MongoDB, Trello
 
 ---
 
@@ -36,3 +36,8 @@ GitHub, HTML, CSS, JavaScript, Node, Nodemon, MongoDB, Trello
 - See all of the recipes you have created on your profile page and view other users creations on their profile. 
 - Add the name of the user who commented on a recipe. 
 - Allow or disable comments on a recipe. 
+
+---
+
+## Attributions
+Favicon image sourced from [**here!**](https://in.pinterest.com/pin/734438651732108014/). Created by pngtree.
