@@ -5,7 +5,7 @@
 <main>
   <h1 class="main-title"><%= title %></h1>
   <section>
-    <div class="title-text"><%= recipe.recipeName %></div>
+    <div class="title-text" id="recipe-name"><%= recipe.recipeName %></div>
     <div class="title-text">Ingredients:</div>
       <ul class="ingredient-text">
         <% recipe.ingredients.forEach(ingredient => { %>
@@ -17,7 +17,7 @@
         <% }) %>
       </ul>
     <div class="title-text"> Recipe Instructions:</div>
-    <div class="ingredient-text"><%= recipe.instructions %></div>
+    <div class="ingredient-text" id="recipe-instructions"><%= recipe.instructions %></div>
     <% if (recipe.owner.equals(user?.profile._id)) { %>
     <a href="/recipes/<%= recipe._id %>/edit">
       <button class="show-btns">Edit Recipe</button>

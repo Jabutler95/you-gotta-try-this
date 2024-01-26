@@ -1,4 +1,5 @@
 .title-text {
+  text-align: center;
   font-family: 'Caveat', cursive, sans-serif;
   font-size: 48px;
 }
@@ -33,6 +34,14 @@
 textarea {
   resize: none;
   height: 20vh;
-  width: 20vw;
+  width: 40vw;
+}
+
+#recipe-name {
+  font-size: 56px;
+}
+
+#recipe-instructions {
+  width: 32vw;
 }
 
