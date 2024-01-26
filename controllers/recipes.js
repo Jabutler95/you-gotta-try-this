@@ -43,19 +43,25 @@ async function makeNewRecipe(req, res) {
 }
 
 async function addIngredients(req, res) {
+  // initialize variables
 const ingredientIdList = []
 let idx = 0
+// check if unit is an array
 if (Array.isArray(req.body.unit)) {
+  //if unit is an array, loop through the elements in the name array
   for (let ingredient in req.body.ingredientName) {
+      // create an ingredient object based on the index
       const newIngredientObject = {}
       newIngredientObject.ingredientName = req.body.ingredientName[idx]
       newIngredientObject.quantity = req.body.quantity[idx]
       newIngredientObject.unit = req.body.unit[idx]
+      // creates a new ingredient in the database and returns a promise. Once resolved the ingredient id is pushed into the ingredient list array
       const ingredientToPush = await Ingredient.create(newIngredientObject)
       ingredientIdList.push(ingredientToPush._id)
       idx++
     }
   } else {
+    // logic to handle a single ingredient entry
     const newIngredientObject = {}
     newIngredientObject.ingredientName = req.body.ingredientName
     newIngredientObject.quantity = req.body.quantity

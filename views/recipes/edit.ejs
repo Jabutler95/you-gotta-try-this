@@ -65,74 +65,74 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const addIngredientButton = document.getElementById('add-ingredient-button');
-    const ingredientsSection = document.getElementById('ingredients-section');
+    const addIngredientButton = document.getElementById('add-ingredient-button')
+    const ingredientsSection = document.getElementById('ingredients-section')
 
     addIngredientButton.addEventListener('click', function() {
-      const newIngredientSection = document.createElement('div');
-      newIngredientSection.className = 'container-div';
+      const newIngredientSection = document.createElement('div')
+      newIngredientSection.className = 'container-div'
 
-      const ingredientNameLabel = document.createElement('label');
-      ingredientNameLabel.textContent = 'Ingredient Name:';
-      ingredientNameLabel.className = 'labels';
+      const ingredientNameLabel = document.createElement('label')
+      ingredientNameLabel.textContent = 'Ingredient Name:'
+      ingredientNameLabel.className = 'labels'
 
-      const ingredientNameInput = document.createElement('input');
-      ingredientNameInput.type = 'text';
-      ingredientNameInput.name = 'ingredientName';
-      ingredientNameInput.className = 'form-input';
+      const ingredientNameInput = document.createElement('input')
+      ingredientNameInput.type = 'text'
+      ingredientNameInput.name = 'ingredientName'
+      ingredientNameInput.className = 'form-input'
 
-      newIngredientSection.appendChild(ingredientNameLabel);
-      newIngredientSection.appendChild(ingredientNameInput);
+      newIngredientSection.appendChild(ingredientNameLabel)
+      newIngredientSection.appendChild(ingredientNameInput)
 
-      const ingredientQuantityLabel = document.createElement('label');
-      ingredientQuantityLabel.textContent = 'Quantity:';
-      ingredientQuantityLabel.className = 'labels';
+      const ingredientQuantityLabel = document.createElement('label')
+      ingredientQuantityLabel.textContent = 'Quantity:'
+      ingredientQuantityLabel.className = 'labels'
 
-      const ingredientQuantityInput = document.createElement('input');
-      ingredientQuantityInput.type = 'text';
-      ingredientQuantityInput.name = 'quantity';
-      ingredientQuantityInput.className = 'form-input';
+      const ingredientQuantityInput = document.createElement('input')
+      ingredientQuantityInput.type = 'text'
+      ingredientQuantityInput.name = 'quantity'
+      ingredientQuantityInput.className = 'form-input'
 
-      newIngredientSection.appendChild(ingredientQuantityLabel);
-      newIngredientSection.appendChild(ingredientQuantityInput);
+      newIngredientSection.appendChild(ingredientQuantityLabel)
+      newIngredientSection.appendChild(ingredientQuantityInput)
 
-      const ingredientUnitLabel = document.createElement('label');
-      ingredientUnitLabel.textContent = 'Unit of Measurement:';
-      ingredientUnitLabel.className = 'labels';
+      const ingredientUnitLabel = document.createElement('label')
+      ingredientUnitLabel.textContent = 'Unit of Measurement:'
+      ingredientUnitLabel.className = 'labels'
 
-      const ingredientUnitSelect = document.createElement('select');
-      ingredientUnitSelect.name = 'unit';
-      ingredientUnitSelect.className = 'form-input';
+      const ingredientUnitSelect = document.createElement('select')
+      ingredientUnitSelect.name = 'unit'
+      ingredientUnitSelect.className = 'form-input'
 
-      const unitOptions = ["milliliter(s)", "liter(s)", "deciliter(s)", "teaspoon(s)", "tablespoon(s)", "fluid ounce(s)", "gill(s)", "cup(s)", "pint(s)", "quart(s)", "gallon(s)", "milligram(s)", "gram(s)", "kilogram(s)", "pound(s)", "ounce(s)"];
+      const unitOptions = ["milliliter(s)", "liter(s)", "deciliter(s)", "teaspoon(s)", "tablespoon(s)", "fluid ounce(s)", "gill(s)", "cup(s)", "pint(s)", "quart(s)", "gallon(s)", "milligram(s)", "gram(s)", "kilogram(s)", "pound(s)", "ounce(s)"]
       
       unitOptions.forEach(function(option) {
-        const unitOption = document.createElement('option');
-        unitOption.value = option;
-        unitOption.text = option;
+        const unitOption = document.createElement('option')
+        unitOption.value = option
+        unitOption.text = option
         ingredientUnitSelect.appendChild(unitOption);
-      });
+      })
 
-      newIngredientSection.appendChild(ingredientUnitLabel);
-      newIngredientSection.appendChild(ingredientUnitSelect);
+      newIngredientSection.appendChild(ingredientUnitLabel)
+      newIngredientSection.appendChild(ingredientUnitSelect)
 
       // Remove Button
-      const removeButton = document.createElement('button');
-      removeButton.type = 'button';
-      removeButton.textContent = 'Remove';
-      removeButton.className = 'remove-ingredient-button';
+      const removeButton = document.createElement('button')
+      removeButton.type = 'button'
+      removeButton.textContent = 'Remove'
+      removeButton.className = 'remove-ingredient-button'
 
-      newIngredientSection.appendChild(removeButton);
+      newIngredientSection.appendChild(removeButton)
 
-      ingredientsSection.appendChild(newIngredientSection);
-    });
+      ingredientsSection.appendChild(newIngredientSection)
+    })
 
     ingredientsSection.addEventListener('click', function(event) {
       if (event.target.classList.contains('remove-ingredient-button')) {
-        event.target.closest('.container-div').remove();
+        event.target.closest('.container-div').remove()
       }
-    });
-  });
+    })
+  })
 </script>
 
 <%- include('../partials/footer') %>
