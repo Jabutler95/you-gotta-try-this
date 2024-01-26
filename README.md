@@ -1,6 +1,7 @@
 # You Gotta Try This!
+---
+![Alt text](images/screenshot.png)
 
-![./images/screenshot.png]
 
 ## Getting Started: 
 You Gotta Try This! is the place where all the most delicious recipes live! Users can save all of their best creations and share them with other users. Love a particular recipe? Leave a comment and let the creator know how much you loved it! 
