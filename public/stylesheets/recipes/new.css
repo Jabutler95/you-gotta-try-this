@@ -1,0 +1,27 @@
+#new-title {
+  font-family: 'Caveat', cursive, sans-serif;
+  font-size: 75px;
+}
+
+#form-container {
+  border: 5px solid #14213D;
+  border-radius: 8px;
+  padding: 48px;
+  margin: 16px;
+  background-color: #FDFFFC;
+}
+
+.labels {
+  font-family: 'Caveat', cursive, sans-serif;
+  font-size: 32px;
+  margin-right: 10px;
+}
+
+.container-div {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: flex-start;
+}

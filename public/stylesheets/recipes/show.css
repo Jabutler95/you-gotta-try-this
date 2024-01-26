@@ -1,6 +1,11 @@
 .title-text {
   font-family: 'Caveat', cursive, sans-serif;
-  font-size: 50px;
+  font-size: 48px;
+}
+
+.main-title {
+  font-family: 'Caveat', cursive, sans-serif;
+  font-size: 75px;
 }
 
 .show-btns {
@@ -11,3 +16,23 @@
   border-style: groove;
   color: white;
 }
+
+.ingredient-text {
+  font-family: 'Caveat', cursive, sans-serif;
+  font-size: 32px;
+}
+
+.line {
+  background-color: #14213D;
+  height: 5px;
+  width: 80vw;
+  margin-top: 50px;
+  margin-bottom: 0;
+}
+
+textarea {
+  resize: none;
+  height: 20vh;
+  width: 20vw;
+}
+

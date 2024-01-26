@@ -73,6 +73,8 @@ async function update(req, res) {
   // console.log('this is the req body',req.body)
   try {
   const recipe = await Recipe.findById(req.params.recipeId)
+  recipe.recipeName = req.body.recipeName;
+  recipe.instructions = req.body.instructions;
   // console.log('recipe before push ===>',recipe);
   const ingredientIdList = await addIngredients(req, res)
   // console.log('ingredient id list ===>',ingredientIdList);

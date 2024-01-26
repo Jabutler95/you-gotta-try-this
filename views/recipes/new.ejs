@@ -4,44 +4,51 @@
 
 
 <main>
-  <h1><%= title %></h1>
-  <form action="/recipes" method="POST">
-    <label for="recipe-input">Recipe Name:</label>
-    <input type="text" name="recipeName" id="recipe-input">
+  <h1 id="new-title"><%= title %></h1>
+  <div id="form-container">
+    <form action="/recipes" method="POST">
+      <label for="recipe-input" class="labels">Recipe Name:</label>
+      <input type="text" name="recipeName" id="recipe-input">
 
-    <div id="ingredients-section">
-      <label for="ingredient-name">Ingredient Name:</label>
-      <input type="text" name="ingredientName" id="ingredient-name">
-      <label for="ingredient-quantity">Quantity:</label>
-      <input type="text" name="quantity" class="ingredient-quantity">
-      <label for="ingredient-unit">Unit of Measurement:</label>
-      <!-- <input name="unit" class="ingredient-unit" id="ingredient-unit"> -->
-      <select name="unit" class="ingredient-unit">
-        <option value="millileter(s)">millileter(s)</option>
-        <option value="liter(s)">liter(s)</option>
-        <option value="deciliter(s)">deciliter(s)</option>
-        <option value="teaspoon(s)">teaspoon(s)</option>
-        <option value="tablespoon(s)">tablespoon(s)</option>
-        <option value="fluid ounce(s)">fluid ounce(s)</option>
-        <option value="gill(s)">gill(s)</option>
-        <option value="cup(s)">cup(s)</option>
-        <option value="pint(s)">pint(s)</option>
-        <option value="quart(s)">quart(s)</option>
-        <option value="gallon(s)">gallon(s)</option>
-        <option value="milligram(s)">milligram(s)</option>
-        <option value="gram(s)">gram(s)</option>
-        <option value="kilogram(s)">kilogram(s)</option>
-        <option value="pound(s)">pound(s)</option>
-        <option value="ounce(s)">ounce(s)</option>
-      </select>
-    </div>
-    <button type="button" id="add-ingredient-button">Add Another Ingredient</button>
-
-    <label for="instructions-input">Instructions:</label>
-    <input type="text" name="instructions" id="instructions-input" placeholder="First, ">
-
-    <button type="submit">Add Recipe</button>
-  </form>
+      <div id="ingredients-section">
+        <div id="ingredient-name-container" class="container-div">
+          <label for="ingredient-name" class="labels">Ingredient Name:</label>
+          <input type="text" name="ingredientName" id="ingredient-name">
+        </div>
+        <div id="ingredient-quantity-container" class="container-div">
+          <label for="ingredient-quantity" class="labels">Quantity:</label>
+          <input type="text" name="quantity" class="ingredient-quantity">
+        </div>
+        <div id="ingredient-unit-container" class="container-div">
+          <label for="ingredient-unit" class="labels">Unit of Measurement:</label>
+          <select name="unit" class="ingredient-unit">
+            <option value="millileter(s)">millileter(s)</option>
+            <option value="liter(s)">liter(s)</option>
+            <option value="deciliter(s)">deciliter(s)</option>
+            <option value="teaspoon(s)">teaspoon(s)</option>
+            <option value="tablespoon(s)">tablespoon(s)</option>
+            <option value="fluid ounce(s)">fluid ounce(s)</option>
+            <option value="gill(s)">gill(s)</option>
+            <option value="cup(s)">cup(s)</option>
+            <option value="pint(s)">pint(s)</option>
+            <option value="quart(s)">quart(s)</option>
+            <option value="gallon(s)">gallon(s)</option>
+            <option value="milligram(s)">milligram(s)</option>
+            <option value="gram(s)">gram(s)</option>
+            <option value="kilogram(s)">kilogram(s)</option>
+            <option value="pound(s)">pound(s)</option>
+            <option value="ounce(s)">ounce(s)</option>
+          </select>
+        </div>
+      </div>
+      <button type="button" id="add-ingredient-button">Add Another Ingredient</button>
+      <div id="instructions-input-container" class="container-div">
+        <label for="instructions-input" class="labels">Instructions:</label>
+        <input type="text" name="instructions" id="instructions-input" placeholder="First, ">
+      </div>
+      <button type="submit">Add Recipe</button>
+    </form>
+  </div>
 </main>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
